@@ -19,8 +19,8 @@ const Login = () => {
         <Formik initialValues={{username: '', password: ''}} onSubmit={handleLogin}>
             {({handleSubmit,handleChange,values})=>(
                 <View style={styles.body_container}>
-                    <Input placeholder="Kullanıcı adını giriniz..."  onChangeText={handleChange('username')} value={values.username}/>
-                    <Input placeholder="Şifrenizi giriniz..." onChangeText={handleChange('password')} value={values.password}/>
+                    <Input isSecure={false} iconName={"account"} placeholder="Kullanıcı adını giriniz..."  onChangeText={handleChange('username')} value={values.username}/>
+                    <Input isSecure={true} iconName={"key"} placeholder="Şifrenizi giriniz..." onChangeText={handleChange('password')} value={values.password}/>
                     <Button text="Giriş Yap" onPress={handleSubmit} />
                 </View>
             )}
