@@ -17,7 +17,7 @@ const Detail: React.FC = () => {
     const route = useRoute<DetailScreenRouteProp>();
     const { id } = route.params;
     console.log({id});
-    const {data, error, loading} = useFetch(`${Config.API_URL}/${id}`);
+    const {data, error, loading} = useFetch(`${Config.API_PRODUCT_URL}/${id}`);
 
     if (error) {
         return (
