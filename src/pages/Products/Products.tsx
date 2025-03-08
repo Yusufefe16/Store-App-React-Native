@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView, FlatList, Button} from 'react-native';
+import {SafeAreaView, FlatList} from 'react-native';
 import styles from './Products.style.tsx';
 import ProductCard from '../../components/ProductCard';
 import Config from 'react-native-config';
@@ -7,7 +7,6 @@ import useFetch from '../../Hooks/useFetch';
 import Error from '../../components/Error';
 import Loading from '../../components/Loading';
 import {NavigationProp} from '@react-navigation/native';
-import {useDispatch} from "react-redux";
 
 
 type ProductsProps = {
@@ -15,7 +14,6 @@ type ProductsProps = {
 };
 
 const Products: React.FC<ProductsProps> = ({ navigation }) => {
-    const dispatch = useDispatch();
     const {data, error, loading} = useFetch(`${Config.API_PRODUCT_URL}`);
 
     const handleProductSelect = (id: number) => {
@@ -38,7 +36,6 @@ const Products: React.FC<ProductsProps> = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-        <Button title={'Logout'} onPress={() => dispatch({type: 'SET_USER', payload: {user: null}})}></Button>
       <FlatList data={data} renderItem={renderProduct} />
     </SafeAreaView>
   );

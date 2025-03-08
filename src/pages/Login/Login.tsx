@@ -8,7 +8,11 @@ import usePost from '../../Hooks/usePost';
 import Config from 'react-native-config';
 import {useDispatch} from 'react-redux';
 
-
+/*
+    SAMPLE USER
+      "username": "donero",
+      "password": "ewedon",
+*/
 
 const Login = () => {
     const {data, loading, error, post} = usePost();
