@@ -6,14 +6,13 @@ import Button from '../../components/Button';
 import {Formik} from 'formik';
 import usePost from '../../Hooks/usePost';
 import Config from 'react-native-config';
-import {NavigationProp} from '@react-navigation/native';
+import {useDispatch} from 'react-redux';
 
-type ProductsProps = {
-    navigation: NavigationProp<any>;
-};
 
-const Login: React.FC<ProductsProps> = ({ navigation }) => {
+
+const Login = () => {
     const {data, loading, error, post} = usePost();
+    const dispatch = useDispatch();
     function handleLogin(values: any) {
         post(`${Config.API_AUTH_URL}/login`, {
             username: values.username,
@@ -34,10 +33,10 @@ const Login: React.FC<ProductsProps> = ({ navigation }) => {
                 Alert.alert('Dükkan', 'Kullanıcı Bulunamadı');
             } else {
                 Alert.alert('Dükkan', 'Giriş başarılı!');
-                navigation.navigate('ProductsPage');
+                dispatch({type: 'SET_USER', payload: {user: data}});
             }
         }
-    }, [data, navigation]);
+    }, [data]);
 
     console.log(data);
 

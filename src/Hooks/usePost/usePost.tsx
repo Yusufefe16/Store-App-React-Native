@@ -7,9 +7,8 @@ function usePost() {
     const [loading, setLoading] = useState<boolean>(false);
 
     const post = async (url: string, apiData: any) => {
-        setLoading(true);
-        setData(null);
         try {
+            setLoading(true);
             const {data: responseData} = await axios.post(url, apiData);
             setData(responseData);
         }catch (e){
